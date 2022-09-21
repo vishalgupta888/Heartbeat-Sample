@@ -35,7 +35,6 @@ const Header = () => {
               position="absolute"
               transition="top 0.2s ease-out"
               top={3}
-              textTransform="uppercase"
               _groupHover={{ top: -10 }}
             >
               SUBSCRIBE

@@ -8,10 +8,10 @@ import { MenuDrop } from './MenuDrop';
 
 
 const Navbar = () => {
-    const lastScroll = 0;
-    const isScrolled = false;
-   
-  function controlNavbar () {
+  const lastScroll = 0;
+  const isScrolled = false;
+
+  function controlNavbar() {
     const topHeader = document.querySelector(".topheader");
     const currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     const scrollDirection = currentScroll < lastScroll;
@@ -22,36 +22,22 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    window.addEventListener("scroll", controlNavbar );
+    window.addEventListener("scroll", controlNavbar);
   }, [])
-  
+
+  const navText = ['DEMOS', 'FEATURES', 'POST', 'CATEGORIES', 'SHOP', 'BUY NOW']
 
   return (
-    <Stack className='topheader' minH={['30px','30px','30px','50px']} zIndex={1} w='100%' display='flex' flexDirection='row' align='center' justify='space-between'>
-
+    <Stack className='topheader' minH={['30px', '30px', '30px', '50px']} zIndex={1} w='100%' display='flex' flexDirection='row' align='center' justify='space-between'>
       <Flex as='nav'>
-
         <Sidebar />
-
         <UnorderedList display={['none', 'none', 'none', 'none', 'flex']} alignItems='center' ml={['60px', '80px', '70px', '140px']} fontSize='0.75em' fontWeight='bold' justifyContent='space-between' w={['35vw', '55vw', '55vw', '43vw',]} listStyleType='none' >
-          <ListItem display={'flex'} alignItems='center' cursor={'pointer'}>
-            DEMOS <MenuDrop />
-          </ListItem>
-          <ListItem display={'flex'} alignItems='center' cursor={'pointer'}>
-            FEATURES <MenuDrop />
-          </ListItem>
-          <ListItem display={'flex'} alignItems='center' cursor={'pointer'}>
-            POST <MenuDrop />
-          </ListItem>
-          <ListItem display={'flex'} alignItems='center' cursor={'pointer'}>
-            CATEGORIES <MenuDrop />
-          </ListItem>
-          <ListItem display={'flex'} alignItems='center' cursor={'pointer'}>
-            SHOP <MenuDrop />
-          </ListItem>
-          <ListItem display={'flex'} alignItems='center' cursor={'pointer'}>
-            BUY NOW <MenuDrop />
-          </ListItem>
+          {navText.map((nav) => {
+            return <ListItem display={'flex'} alignItems='center' cursor={'pointer'}>
+              {nav} <MenuDrop />
+            </ListItem>
+          })}
+
           <ListItem display={'flex'} alignItems='center' cursor={'pointer'}>
             <BsThreeDots fontSize={'1.8em'} />
           </ListItem>
